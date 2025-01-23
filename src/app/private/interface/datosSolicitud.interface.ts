@@ -1,0 +1,29 @@
+    export interface DatosSolicitud{
+        fechaDeCarga:string,
+        plazaFONE:string,
+        cat_Puesto:string,
+        categoria:string,
+        horas:number,
+        rfc:string,
+        inicio:string,
+        estatusPlaza:string,
+        ultimoMotivo:string,
+        modelo:string,
+        nivelEducativo:string,
+        cct:string,
+        turno:string,
+        zonaEconomica:string,
+        municipio:string,
+        localidad:string,
+        ccT_Analitico:string,
+        estatusAnalitico:string,
+        estatusMDP:string,
+        pagoDemasia:string,
+        ccT_Asigna:string,
+        observaciones:string,
+        justificacion:string,
+        cargaUsicamm:number
+        idPlaza:number,
+        ruta:string
+    }
+ 

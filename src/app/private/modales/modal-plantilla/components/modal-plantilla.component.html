@@ -1,0 +1,135 @@
+ 
+
+ <ion-header>
+  <ion-toolbar color="primary"  aling="center">
+    <ion-title>Centro de Trabajo  {{cct}} -- {{datosCt[0].nombrect}}</ion-title><br>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Salir</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding">
+  LOC: <strong> {{datosCt[0].nombreloc}} </strong> || MUN: <strong> {{datosCt[0].nombrempio}} </strong> || TURNO: <strong> {{datosCt[0].desturno}} </strong> 
+  <hr>
+  <ul class="nav nav-tabs nav-justified">
+    <li class="ultimo">
+      <ion-button size="small" (click)="navega(1)"  >
+        Ultimo Movimiento
+        <ion-icon slot="icon-only" name="newspaper" md="settings-sharp"></ion-icon>
+      </ion-button>
+      
+    </li>
+    <li class="nav-item">
+      <ion-button size="small" (click)="navega(2)" >
+        Plantilla Nomina
+        <ion-icon slot="icon-only" name="id-card"></ion-icon>
+      </ion-button>
+    
+    </li>
+    <li class="nav-item">
+      <ion-button size="small"  (click)="navega(3)"  >
+        Plantilla Sipse
+        <ion-icon slot="icon-only" name="receipt"></ion-icon>
+      </ion-button>
+      
+    </li>
+    <li class="nav-item">
+      <ion-button size="small" (click)="navega(4)" >
+       Descargar Plantilla Laboral
+        <ion-icon slot="icon-only" name="reader"></ion-icon>
+      </ion-button>
+       
+    </li>
+  </ul>
+  
+  <ng-template appReceptor></ng-template>
+
+    <!-- <ion-tab-bar slot="top">
+      
+      <ion-tab-button (click)="navega()" >
+        Ultimo movimiento
+        <ion-icon name="search"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="sipse">
+        Plantilla SIPSE
+        <ion-icon name="play-circle"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="nomina/{{cct}}">
+        Plantilla Nomina
+        <ion-icon name="radio"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="laboral">
+        Carga laboral
+        <ion-icon name="library"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar> -->
+<!--    
+      <object
+          [data]="url"
+          width="100%"
+          height="100%">
+        
+        </object>
+      -->
+   
+  
+ 
+
+  <!-- <ion-card>
+    <ion-card-header>
+       
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card-title> {{cct}}</ion-card-title>
+              <ion-card-subtitle> {{datosPlantilla[0].nombreCT}} </ion-card-subtitle>
+              <ion-card-subtitle>Zona Escolar: {{datosPlantilla[0].zonaEscola}}   </ion-card-subtitle>
+              <ion-card-subtitle>Zona Economica: {{datosPlantilla[0].zona_Econo}}</ion-card-subtitle>
+            </ion-col>
+            <ion-col>
+              <ion-card-title> {{rfc}}</ion-card-title>
+              <ion-card-subtitle> {{datosPlantilla[0].nombre}}   </ion-card-subtitle>
+            </ion-col>
+            
+          </ion-row>
+        </ion-grid>
+
+     
+       
+     </ion-card-header>
+  
+    <ion-card-content>
+      <table class="table table-hover " >
+        <thead class="thead-dark">
+          <tr  >
+             
+            <th scope="col">Turno</th>
+            <th scope="col">Función</th>
+            <th scope="col">Grado y Grupo</th>
+            <th scope="col">Materia</th>
+            <th scope="col">Hrs Frente a Grupo</th>
+            <th scope="col">Efectos</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let p of datosPlantilla; let i = index">
+          
+            <td>{{ p.descturno }}</td>
+            <td>{{ p.funcion }}</td>
+            <td>{{ p.grado }} - {{ p.grupo}}</td>
+            <td>{{ p.materia }}</td>
+            <td>{{ p.horasFteGpo }}</td>
+            <td>{{ p.periodoInicial }} - {{ p.periodoFinal }}</td>
+           
+          </tr>
+        </tbody>
+      </table>
+       
+      
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>
+
+ 

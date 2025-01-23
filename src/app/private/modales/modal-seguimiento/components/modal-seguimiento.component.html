@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Seguimiento de la solicitud de la plaza {{DatosSolicitud[0].plazaFONE}} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="salir()" [strong]="true">Salir</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{DatosSolicitud[0].plazaFONE}}</ion-card-title>
+        <ion-card-subtitle>{{DatosSolicitud[0].ccT_Asigna}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-progress-bar *ngIf="cargando" type="indeterminate"></ion-progress-bar>
+      
+      <ion-card-content>
+        <table class="table table-hover " >
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Estatus</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Justificación</th>
+              <th scope="col">Observaciones</th>
+              <th scope="col">Documento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let p of DatosSeg ; let i = index">
+              <td>{{ p.fechaEntrada }}</td>
+              <td>{{ p.estatus_Vacante }}</td>
+              <td>{{ p.nombreUsuario }}</td>
+              <td>{{ p.justificacion }} </td>
+              <td>{{ p.observaciones }} </td>
+              <td><ion-button (click)="verDoc(p.ruta)"  size="small" *ngIf="p.ruta">  <ion-icon name="document-attach-outline"> Ver Documento </ion-icon> </ion-button> </td>
+            </tr>
+          </tbody>
+        </table>
+      
+       
+  
+       
+      </ion-card-content>
+   
+  </ion-card>
+</ion-content>

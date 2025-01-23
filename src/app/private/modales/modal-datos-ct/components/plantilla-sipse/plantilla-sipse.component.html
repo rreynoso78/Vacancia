@@ -1,0 +1,39 @@
+ 
+   <ion-card>
+    <ion-card-header>
+      <ion-card-title>Plantilla Sipse        </ion-card-title>
+     
+     </ion-card-header>
+  
+    <ion-card-content>
+      <table class="table table-hover " >
+        <thead class="thead-dark">
+          <tr  >
+            <th scope="col">Nombre</th> 
+            <th scope="col">Apellido Paterno</th>
+            <th scope="col">Apellido Materno</th>
+            <th scope="col">CURP</th>
+            <th scope="col">Fecha Actualización</th>
+            <th scope="col">Fecha Alta</th>
+            <th scope="col">Función	</th>
+            <th scope="col">Turno	</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of datosPlantilla; let i = index">
+            <td>{{ p.nombres }}</td>
+            <td>{{ p.apPaterno }}</td>
+            <td>{{ p.apMaterno }}</td>
+            <td>{{ p.curp }}</td>
+            <td>{{ p.fechaActualizacion }}</td>
+            <td>{{ p.fechaAlta }}</td>
+            <td>{{ p.nombreFuncion }}</td>
+            <td>{{ p.nombreTurno }}</td>
+          </tr>
+        </tbody>
+      </table>
+       
+      
+    </ion-card-content>
+  </ion-card>  
+ 

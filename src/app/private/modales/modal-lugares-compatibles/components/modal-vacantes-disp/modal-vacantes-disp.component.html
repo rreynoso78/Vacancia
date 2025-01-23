@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar  color="primary"  aling="center">
+    <ion-title>Vacantes Compatibles con el Centro de Trabajo {{claveCT}} </ion-title>
+    <!-- <ion-title>Centro de Trabajo  {{cct}} -- {{datosCt[0].nombrect}}</ion-title><br> -->
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()" [strong]="true">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" #content  [scrollEvents]="true" (ionScroll)="onContentScroll($event)" >
+  <!-- <app-scroll-to-top-component>
+  </app-scroll-to-top-component> -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <h3>Necesidad</h3>
+        <ion-row>
+
+          <modal-datos-necesidad-ct [necesidad]="necesidad"></modal-datos-necesidad-ct>
+        </ion-row>
+      </ion-col>
+
+      <ion-col size="8">
+        <modal-datos-ct-datos [claveCT]="claveCT"></modal-datos-ct-datos>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+<hr>
+
+
+<modal-tabla-vacantes-disponibles [claveCT]="claveCT"></modal-tabla-vacantes-disponibles>
+
+<!--
+    <ion-fab *ngIf="isVisible" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="scrollToTop()">
+        <ion-icon name="arrow-up"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+
+    <br/> <br/>
+
+</ion-content>

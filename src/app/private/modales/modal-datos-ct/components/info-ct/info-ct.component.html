@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar  color="primary"  aling="center">
+    <ion-title>Centro de Trabajo {{claveCT}}</ion-title>
+    <!-- <ion-title>Centro de Trabajo  {{cct}} -- {{datosCt[0].nombrect}}</ion-title><br> -->
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()" [strong]="true">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" #content  [scrollEvents]="true" (ionScroll)="onContentScroll($event)" >
+  <!-- <app-scroll-to-top-component>
+  </app-scroll-to-top-component> -->
+
+
+    <modal-datos-ct-datos [claveCT]=claveCT></modal-datos-ct-datos>
+
+    <modal-datos-ct-consulta-plantilla [claveCT]=claveCT [RFC]=RFC></modal-datos-ct-consulta-plantilla>
+
+    <necesidad-captura [claveCT]=claveCT *ngIf="origen.equals('necesidades')" ></necesidad-captura>
+
+
+    <ion-fab *ngIf="isVisible" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="scrollToTop()">
+        <ion-icon name="arrow-up"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <br/> <br/>
+
+</ion-content>

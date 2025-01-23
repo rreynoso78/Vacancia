@@ -1,0 +1,58 @@
+.area-nombre-proceso{
+    ion-img{
+        margin: 0 auto;
+        max-width: 120px;
+    }
+    h4{
+        color: var(--ion-color-primary);
+        margin: 0 0 5px;
+    }
+    h6{
+        margin: 0;
+    }
+}
+.w-350{
+    margin: 0 auto;
+    max-width: 350px;
+}
+.contacto{
+    list-style-type: none;
+    padding-left: 10px;
+    li{
+        + li{
+            border-top: 1px solid var(--ion-color-gris-seis);
+        }
+    }
+    .telefono{
+        div{
+            font-size: 18px;
+            color: var(--ion-color-gris-uno);
+            font-weight: 500;
+            p{
+                color: var(--ion-color-gris-dos);
+                font-size: 16px;
+                font-weight: 400;
+                span{
+                    color: var(--ion-color-gris-uno);
+                    font-weight: 500;
+                    + span{
+                        ::before{
+                            content: ',';
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .correo{
+        a{
+            display: block;
+            text-decoration: none;
+            margin: 16px 0;
+        }
+    }
+}
+h5{
+    color: var(--ion-color-gris-tres);
+    font-weight: 400 !important;
+}

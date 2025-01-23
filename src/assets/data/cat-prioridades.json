@@ -1,0 +1,14 @@
+[
+  {
+    "id":1,
+    "prioridad":"URGENTE"
+  },
+  {
+    "id":2,
+    "prioridad":"ALTA"
+  },
+  {
+    "id":3,
+    "prioridad":"NORMAL"
+  }
+]

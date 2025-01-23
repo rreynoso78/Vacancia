@@ -1,0 +1,16 @@
+.align-end {
+  display: flex;
+  align-items: flex-end;
+  // padding-bottom: 1rem; /* Aligns content vertically to the end */
+}
+.small-searchbar {
+  height: 30px; /* Ajusta la altura */
+  font-size: 14px; /* Ajusta el tamaño del texto */
+}
+.small-searchbar .searchbar-input {
+  font-size: 14px; /* Ajusta el tamaño del texto dentro del input */
+}
+.small-searchbar .searchbar-clear-icon,
+.small-searchbar .searchbar-search-icon {
+  font-size: 18px; /* Ajusta el tamaño de los iconos si es necesario */
+}

@@ -1,0 +1,57 @@
+
+<div *ngIf="datosCT; else noData">
+  <ion-grid [fixed]="true">
+
+    <ion-row>
+      <ion-col>
+        <ion-text>
+          <h3>{{datosCT.clave}} </h3>
+        </ion-text>
+
+        <ion-row>
+          <ion-card-subtitle> <h6>{{datosCT.nombre}} </h6></ion-card-subtitle>
+        </ion-row>
+        <ion-row>
+          <ion-card-subtitle>TURNO: {{datosCT.turno.descripcion1}}   </ion-card-subtitle>
+        </ion-row>
+        <ion-row>
+          <ion-card-subtitle>ZONA ESCOLAR: {{datosCT.zona.id}}   </ion-card-subtitle>
+        </ion-row>
+        <ion-row>
+          <ion-card-subtitle>ZONA ECONOMICA: {{datosCT.zonaEconomica}}   </ion-card-subtitle>
+        </ion-row>
+      </ion-col>
+
+      <ion-col>
+        <ion-row>
+          <ion-card-subtitle>DELEGACIÓN: {{datosCT.delegacion}} </ion-card-subtitle>
+        </ion-row>
+        <ion-row>
+          <ion-card-subtitle>GEOREFERENCIA: "{{datosCT.georeferencia.latitud}} , {{datosCT.georeferencia.longitud}}" </ion-card-subtitle>
+        </ion-row>
+        <ion-row>
+          <ion-card-subtitle>DOMICILIO: {{datosCT.domicilio.detalle}} {{datosCT.domicilio.numExterior ? datosCT.domicilio.numExterior  : 'SN' }}  ,CP: {{datosCT.domicilio.cp}}</ion-card-subtitle>
+        </ion-row>
+        <ion-row>
+          <ion-card-subtitle>LOCALIDAD: {{datosCT.localidad.nombre}}</ion-card-subtitle>
+        </ion-row>
+          <ion-card-subtitle>MUNICIPIO: {{datosCT.municipio.nombre}}</ion-card-subtitle>
+        <ion-row>
+          <ion-card-subtitle>REGIÓN: {{datosCT.region}}</ion-card-subtitle>
+        </ion-row>
+      </ion-col>
+
+    </ion-row>
+
+
+
+  </ion-grid>
+
+
+</div>
+
+<ng-template #noData>
+  <h2>No hay datos disponibles</h2>
+</ng-template>
+
+

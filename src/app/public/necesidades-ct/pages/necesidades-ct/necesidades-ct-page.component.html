@@ -1,0 +1,161 @@
+<ion-header >
+  <ion-toolbar color="primary" >
+    <ion-buttons >
+      <ion-button (click)="toggleMenu()" color="gris-tres"  size="small"   >
+        <ion-icon name="grid-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+     Necesidades del CT
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content  >
+
+  <div >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label position="stacked">Centro de Trabajo</ion-label>
+
+        <ion-searchbar #ctInput id="ctInput"
+        type="text"
+        placeholder="Escriba la Clave de CT"
+        labelPlacement="stacked"
+        [(ngModel)]="ctBuscar"
+        (ionClear)="onClearInput($event)"
+        class="small-searchbar">
+
+        </ion-searchbar>
+        </ion-col>
+        <ion-col size="auto" class="align-end">
+          <ion-button size="small"
+            fill="solid"
+            (click)="buscarCT()"
+            title="Buscar" >
+            <ion-icon   slot="icon-only" name="search"></ion-icon>  <b>Buscar</b>
+          </ion-button>
+      </ion-col>
+      <ion-col size="auto" class="align-end">
+        <ion-button size="small"
+          fill="solid"
+          (click)="agregarNecesidad()"
+          title="Buscar" >
+          <ion-icon   slot="icon-only" name="add"></ion-icon>  <b>Agregar</b>
+        </ion-button>
+    </ion-col>
+      </ion-row>
+
+
+      <hr>
+
+      <ion-row>
+
+        <ngx-datatable  #myTable class="material "
+        [loadingIndicator]="loadingIndicator"
+        [columnMode]="ColumnMode.standard" [rows]="rows"
+        [headerHeight]="50" [footerHeight]="50"
+        [rowClass]="getRowClass"
+        rowHeight="auto"
+        [reorderable]="reorderable"
+        [limit]="10"
+        [selected]="selected"
+        [selectionType]="SelectionType.checkbox"
+        [selectAllRowsOnPage]="false"
+        >
+
+
+        <ngx-datatable-column
+          [width]="10"
+          [resizeable]="false"
+          [sortable]="false"
+          [draggable]="false"
+          [canAutoResize]="false"
+        >
+        </ngx-datatable-column>
+
+          <ngx-datatable-column   prop="plazaFONE" name="CT" [width]="150">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-button size="small" fill="clear" (click)="openModalDetalleCt(row.cct)" >
+                <ion-icon name="open-outline"></ion-icon>
+                <ion-label>{{row.cct}}</ion-label>
+              </ion-button>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column prop="pagoDemasia" name="Funcion" [width]="150" >
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-label>{{ obtenerNombreFuncion(row.id_Funcion)}}</ion-label>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column prop="pagoDemasia" name="Localidad"  >
+            <ng-template let-row="row"  ngx-datatable-cell-template>
+              <ion-label>{{row.localidad}}</ion-label>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column prop="cct" name="Municipio">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-label>{{row.municipio}}</ion-label>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Región">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-label>{{row.region}}</ion-label>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column prop="" name="Prioridad" >
+            <ng-template let-row="row"  ngx-datatable-cell-template>
+              <ion-label>{{row.nombrePrioridad}}</ion-label>
+            </ng-template>
+          </ngx-datatable-column>
+
+
+          <ngx-datatable-column prop="" name="Compatibilidad" [width]="200">
+            <ng-template let-row="row"  ngx-datatable-cell-template>
+              <ion-row>
+                <ion-col *ngIf=" calcularSuma (row.compCCT ,row.compLoc , row.compMun ,row.compRegion)>0; else sinCompatibilidad">
+                  <ion-button size="small" fill="clear" (click)="openModalVacantesComp(row)" >
+                    <ion-icon name="open-outline"></ion-icon>
+                      VER VACANTES<br>COMPATIBLES
+                  </ion-button>
+                  </ion-col>
+                <ng-template #sinCompatibilidad>
+                    NO EXISTEN VACANTES COMPATIBLES
+                  <!-- Contenido alternativo a mostrar si la condición es falsa -->
+                </ng-template>
+              </ion-row>
+
+            </ng-template>
+          </ngx-datatable-column>
+
+          <!-- <ngx-datatable-column prop="" name="Acciones" >
+            <ng-template let-row="row"  ngx-datatable-cell-template>
+
+              <ion-button  fill="clear" >Validar</ion-button>
+              <ion-button  color="primary" fill="clear" *ngIf="row.idEstatus_Vacante>0">
+                <sub> hhh</sub>
+              </ion-button>
+            </ng-template>
+          </ngx-datatable-column> -->
+
+
+        </ngx-datatable>
+
+      </ion-row>
+
+<!--
+      <hr>
+
+      <ion-row>
+        <shared-datos-ct [ctDatos]=datosCt> </shared-datos-ct>
+      </ion-row> -->
+
+    </ion-grid>
+  </div>
+
+
+</ion-content>

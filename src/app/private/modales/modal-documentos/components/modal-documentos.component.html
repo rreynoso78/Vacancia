@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{titulo}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close" slot="icon-only" color="gris-dos"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="height-100 ion-no-padding">
+    <ion-row class="height-100">
+      <ion-col size="12" class="ion-no-padding ion-text-center" *ngIf="base64Doc">
+        <object
+          [data]="url"
+          type="application/pdf"
+          width="100%"
+          height="100%">
+          <iframe [src]="url" width="100%" height="100%">
+            Este navegador no soporta la visualización de archivos PDF
+          </iframe>
+        </object>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

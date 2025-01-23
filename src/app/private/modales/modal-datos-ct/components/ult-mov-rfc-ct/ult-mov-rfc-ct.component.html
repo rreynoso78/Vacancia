@@ -1,0 +1,48 @@
+<!-- <app-spinner></app-spinner> -->
+
+<ion-card>
+  <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card-title> {{rfc}}</ion-card-title>
+          </ion-col>
+          <ion-col>
+            <ion-text>  <h5>{{nombreCt}} </h5>  </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+   </ion-card-header>
+
+  <ion-card-content>
+
+    <table class="table table-hover " >
+      <thead class="thead-dark">
+        <tr  >
+
+          <th scope="col">Turno</th>
+          <th scope="col">Función</th>
+          <th scope="col">Grado y Grupo</th>
+          <th scope="col">Materia</th>
+          <th scope="col">Hrs Frente a Grupo</th>
+          <th scope="col">Efectos</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let p of datosPlantilla; let i = index">
+
+          <td>{{ p.descturno }}</td>
+          <td>{{ p.funcion }}</td>
+          <td>{{ p.grado }} - {{ p.grupo}}</td>
+          <td>{{ p.materia }}</td>
+          <td>{{ p.horasFteGpo }}</td>
+          <td>{{ p.periodoInicial }} - {{ p.periodoFinal }}</td>
+
+        </tr>
+      </tbody>
+    </table>
+
+
+  </ion-card-content>
+</ion-card>

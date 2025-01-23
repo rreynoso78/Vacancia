@@ -1,0 +1,8 @@
+<ion-content #content (ionScroll)="onContentScroll($event)">
+  <!-- Tu contenido aquí -->
+  <ion-fab *ngIf="isVisible" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="scrollToTop()">
+      <ion-icon name="arrow-up"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

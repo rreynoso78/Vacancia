@@ -1,0 +1,891 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+
+ion-toolbar{
+  // background: white;
+  
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  ion-toolbar:last-of-type{
+      --border-color: #fff;
+      --border-with: 0;
+     
+    }
+    .header-collapse-condense ion-toolbar:first-of-type{
+      padding-top: 0;
+    }
+    ion-segment[mode="ios"]{
+      --background: #e8e8e8;
+      ion-segment-button{
+        --indicator-box-shadow: green !important;
+        border-radius: 6px;
+        margin: 2px;
+        --color: var(--ion-color-gris-tres);
+        --background-checked: white;
+        --color-checked: var(--ion-color-gris-dos);
+        --indicator-color: transparent !important;
+      }
+    }
+    ion-select::part(placeholder){
+      color: var(--ion-color-gris-dos);
+      opacity: 1;
+    }
+    ion-thumbnail{
+      &.click{
+        cursor: pointer;
+      }
+    }
+    .borde-gris{
+      ion-button::part(native){
+        border-color: var(--ion-color-gris-seis);
+      }
+    }
+    .background-white{
+      background-color: white;
+    }
+    .box-shadow{
+      box-shadow: 0px 1px 3px rgba(2, 8, 20, 0.06), 0px 1px 2px rgba(2, 8, 20, 0.04);
+    }
+    
+    .padding-content{
+      padding: 20px !important;
+      margin: 0 auto;
+      &.sm{
+        max-width: 540px;
+      }
+      &.md{
+        max-width: 720px;
+      }
+      &.lg{
+        max-width: 960px;
+      }
+    }
+    .divider{
+      display: block;
+      border-top: 1px solid var(--ion-color-gris-seis);
+      margin: 15px 0;
+    }
+    
+  // Menú lateral //
+   .split-pane-visible >.split-pane-side {
+     min-width: 250px !important;
+     max-width: 250px !important;
+   }
+
+    // Formularios //
+    form, .form{
+      ion-textarea {
+        border: 1px solid var(--ion-color-gris-cinco);
+        border-radius: 4px;
+        color: var(--ion-color-gris-uno) !important;
+        margin: 8px 8px 8px 0;
+        padding: 11px 15px;
+        transition: border 0.3s;
+        --placeholder-color: var(--ion-color-gris-tres) !important;
+        &.has-focus{
+          border-color: var(--ion-color-gris-tres);
+        }
+        &:focus{
+          border-color: var(--ion-color-gris-tres);
+        }
+        &:hover{
+          border-color: var(--ion-color-gris-tres);
+        }
+      }
+      ion-input {
+        --placeholder-color: var(--ion-color-gris-cuatro) !important;
+        --padding-start: 8px !important;
+        --color: var(--ion-color-gris-uno) !important;
+        border: 1px solid var(--ion-color-gris-cinco);
+        border-radius: 4px;
+        margin: 8px 8px 8px 0;
+        min-height: 42px;
+        transition: border 0.3s;
+        &.has-focus{
+          border-color: var(--ion-color-gris-tres);
+        }
+        &:hover{
+          border-color: var(--ion-color-gris-tres);
+        }
+        // Se oculta el ícono de 'limpiado' para los input de fecha que usan IonicTimePicker
+        &[formcontrolname="horaCompromiso"]{
+          +ion-icon{
+            display: none !important;
+          }
+        }
+      }
+      ion-label{
+        --color: var(--ion-color-gris-dos) !important;
+        font-size: 16px !important;
+        font-weight: 300;
+      }
+      /* Anchos para máximo de caracteres en Inputs */
+      /* El rango es de 2 a 8 */
+      ion-input, input{
+        &[class*="max-"] {
+          letter-spacing: 1px;
+        }
+        &.max-2{
+          max-width: 40px !important;
+        }
+        &.max-3{
+          max-width: 50px !important;
+        }
+        &.max-4{
+          max-width: 60px !important;
+        }
+        &.max-5{
+          max-width: 70px !important;
+        }
+        &.max-6{
+          max-width: 80px !important;
+        }
+        &.max-7{
+          max-width: 90px !important;
+        }
+        &.max-8{
+          max-width: 100px !important;
+        }
+        &.max-9{
+          max-width: 110px !important;
+        }
+        &.max-10{
+          max-width: 120px !important;
+        }
+        &.max-11{
+          max-width: 130px !important;
+        }
+        &.max-12{
+          max-width: 140px !important;
+        }
+        &.max-13{
+          max-width: 150px !important;
+        }
+        &.max-14{
+          max-width: 160px !important;
+        }
+        &.max-15{
+          max-width: 170px !important;
+        }
+        &.max-16{
+          max-width: 180px !important;
+        }
+        &.max-17{
+          max-width: 190px !important;
+        }
+        &.max-18{
+          max-width: 200px !important;
+        }
+        &.max-19{
+          max-width: 210px !important;
+        }
+        &.max-20{
+          max-width: 210px !important;
+        }
+        &.max-21{
+          max-width: 220px !important;
+        }
+        &.max-22{
+          max-width: 230px !important;
+        }
+      }
+    
+      ion-input{
+        &.max-50{
+          max-width: 50px;
+        }
+        &.max-100{
+          max-width: 100px;
+        }
+        &.input-height-32{
+          min-height: 32px;
+          input{
+              padding-top: 5px !important;
+              padding-bottom: 5px !important;
+          }
+        }
+      }
+    
+      .hover-border-radius, .hover-border-radius.activated{
+        border-radius: 8px;
+        &:hover{
+          border-radius: 8px;
+        }
+      }
+      ion-select{
+        border: 1px solid var(--ion-color-gris-cinco);
+        border-radius: 4px;
+        margin: 8px 8px 8px 0;
+        padding: 12px 15px;
+        transition: border 0.3s;
+        &.ng-invalid {
+          .select-text {
+            color: var(--ion-color-gris-dos);
+          }
+        }
+        &.ng-untouched {
+          .select-text {
+            color: var(--ion-color-gris-dos);
+          }
+        }
+        &.formulario-error {
+          border-color: var(--ion-color-rojo);
+        }
+        &:hover{
+          border-color: var(--ion-color-gris-tres);
+        }
+        .select-icon-inner{
+          top: calc(50% + 5px);
+        }
+        .select-text {
+          color: var(--ion-color-gris-uno);
+          font-weight: 500;
+        }
+      }
+      &.form-disabled{
+        ion-item{
+          ion-label{
+            font-weight: 400;
+            opacity: 0.8 !important;
+          }
+        }
+        .button-icon{
+          color: var(--ion-color-gris-seis) !important;
+          &:hover{
+            border: 1px solid var(--ion-color-gris-seis) !important;
+          }
+          &.active{
+            color: var(--ion-color-gris-tres) !important ;
+            border: 1px solid var(--ion-color-gris-seis) !important;
+            &:after{
+              width: 14px;
+              height: 14px;
+              opacity: 0.7;
+            }
+          }
+        }
+        ion-input{
+          border-color: transparent !important;
+          font-weight: 400 !important;
+          background-color: #f7f7f7 !important ;
+          &:after{
+            background-image: none !important;
+          }
+          .native-input{
+            opacity: 0.8 !important;
+          }
+        }
+        ion-textarea{
+          border-color: #f7f7f7 !important;
+          font-weight: 400 !important;
+          background-color: #f7f7f7 !important;
+          .native-textarea{
+            opacity: 0.8 !important;
+          }
+        }
+        ion-select{
+          border-color: #f7f7f7 !important;
+          font-weight: 400 !important;
+          font-weight: 400 !important;
+          background-color: #f7f7f7 !important;
+          opacity: 0.8 !important;  
+        }
+        .button-delete{
+          display: none;
+        }
+        .date-format{
+          background-color: #e77373;
+          border-color: transparent !important;
+          opacity: 0.8 !important;
+        }
+      }
+    }
+    
+    ion-input{
+      &.inline{
+        display: inline-block;
+        margin-left: 10px;
+      }
+    }
+    
+    // Columnas con el mismo alto
+
+    .cols-same-height{
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+      > ion-col{
+          display: flex;
+          &.display-revert{
+            display: revert;
+          }
+      }
+    }
+    // Anchos fijos para columnas
+    
+    .col-20{
+      flex: 0 0 20px;
+    }
+    .col-30{
+      flex: 0 0 30px;
+    }
+    .col-50{
+      flex: 0 0 50px;
+    }
+    .col-75{
+      flex: 0 0 75px;
+    }
+    .col-100{
+      flex: 0 0 100px;
+    }
+    .col-125{
+      flex: 0 0 125px;
+    }
+    .col-150{
+      flex: 0 0 150px;
+    }
+    .col-175{
+      flex: 0 0 175px;
+    }
+    .col-200{
+      flex: 0 0 200px;
+    }
+    .col-225{
+      flex: 0 0 225px;
+    }
+    .col-250{
+      flex: 0 0 250px;
+    }
+    .col-300{
+      flex: 0 0 300px;
+    }
+    .col-325{
+      flex: 0 0 325px;
+    }
+    .col-350{
+      flex: 0 0 350px;
+    }
+    
+    .height-100{
+      height: 100%;
+      ion-spinner{
+        position: absolute;
+        left: calc(50% - 14px);
+        top: calc(50% - 35px);
+        &:after{
+          color: var(--ion-color-gris-tres);
+          content: attr(texto-apoyo);
+          display: block;
+          font-size: 0.9rem;
+          margin-left: -55px;
+          margin-top: 35px;
+          text-align: center;
+          width: 150px;
+        }
+      }
+    }
+    
+    ion-footer{
+      gs-connectivity-status{
+        background-color:white;
+        color: var(--ion-color-rojo);
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 2rem;
+        padding-left: 20px;
+        &:empty{
+          padding-left: 0;
+        }
+        .mensaje-offline{
+          --padding: 5px 20px;
+          &:before{
+            background-color: magenta;
+            border-radius: 50px;
+            content: '';
+            display: inline-block;
+            height: 5px;
+            width: 5px;
+          }
+        }
+      }
+    }
+    ion-footer.desarrollo{
+      ion-toolbar{
+        --background: #f15b65;
+        --border-width: 0 !important;
+        --color: #fff;
+        --min-height: 28px;
+        ion-title{
+          color: #fff;
+          font-size: 0.8rem;
+        }
+      }
+    }
+    ion-card-header{
+      h2, h3{
+        color: var(--ion-color-gris-uno);
+        margin-top: 0;
+      }
+    }
+    .height-100{
+      height: 100%;
+      ion-spinner{
+        position: absolute;
+        left: calc(50% - 14px);
+        top: calc(50% + 70px);
+        &:after{
+          color: var(--ion-color-gris-cuatro);
+          content: attr(texto-apoyo);
+          display: block;
+          font-size: 0.9rem;
+          margin-left: -55px;
+          margin-top: 35px;
+          text-align: center;
+          width: 150px;
+        }
+      }
+    }
+    
+    @media only screen and (max-width: 576px){
+      ion-card{
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    /*toast*/
+    ion-toast{
+      --background: white;
+      --border-style: solid;
+      --border-width: 0 0 4px 0;
+      --box-shadow: 0px 0.175em 0.5em rgba(2, 8, 20, 0.1), 0px 0.085em 0.175em rgba(2, 8, 20, 0.08);
+      --color: var(--ion-color-gris-dos);
+      --button-color: var(--ion-color-gris-dos);
+      font-size: 16px;
+      &.correcto {
+        --border-color: var(--ion-color-verde);
+      }
+      &.error {
+        --border-color: var(--ion-color-rojo);
+        // ::part(container){
+        //   &:before {
+        //     color: var(--ion-color-rojo);
+        //     content: '!Atención!';
+        //     display: block;
+        //     font-weight: 500;
+        //     padding-left: 10px;
+        //   }
+        // }
+      }
+    }
+    ion-segment{
+      margin: 0 0 10px 5px;
+      ion-segment-button{
+        &::before{
+          border-left: none !important;
+        }
+        ion-label{
+          text-transform: none;
+          font-weight: 400;
+        }
+        ion-icon{
+          font-size: 18px;
+        }
+        &.segment-button-disabled{
+          border-bottom: 1px solid var(--ion-color-gris-cinco);
+        }
+      } 
+    }
+    /*login*/
+    .border-bottom-login{
+      border-bottom: 1px solid var(--ion-color-gris-seis);
+      margin-bottom: 10px;
+      padding-bottom: 15px;
+    }
+    .logos-oficiales{
+      margin: 0 auto;
+      width: 80px;
+    }
+    .area-logo-sistema{
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo-sistema{
+      width: 350px;
+      margin: 5px auto 0 auto;
+    }
+    .nombre-sistema{
+      color: var(--ion-color-gris-dos);
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.1em;
+      margin: 5px auto 0;
+      max-width: 550px;
+      margin-top: 10px;
+    }
+    .nombre-sistema > span{
+      color: var(--ion-color-gris-cuatro);
+      font-size: 16px;
+      font-weight: 300;
+      padding-left: 5px;
+    }
+    .area-descripcion-sistema{
+      color: var(--ion-color-gris-tres);
+      font-weight: 300;
+      margin: 5px auto;
+      max-width: 240px;
+      text-align: center;
+      line-height: 18px;
+    }
+    .area-autenticacion{
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 10px 35px 35px;
+      margin: 25px auto;
+      max-width: 350px;
+      color: var(--ion-color-gris-dos);
+      text-align: center;
+      font-size: 16px;
+      p{
+        max-width: 250px;
+        text-align: center;
+        margin: 0 auto 15px;
+        line-height: 24px;
+        color: var(--ion-color-gris-tres);
+      }
+      ion-list{
+        background: white;
+        ion-item{
+          --padding-start: 0;
+          --inner-padding-end: 0;
+          ion-input{
+            --color: var(--ion-color-gris-uno) !important;
+            caret-color: var(--ion-color-gris-uno);
+            letter-spacing: 1px;
+            &.icon-start{
+                ion-icon{
+                    color: var(--ion-color-gris-cuatro);
+                    font-size: 18px;
+                    padding: 0 0 0 10px;
+                }
+            }
+          }
+        }
+      }
+    }
+    .crear-cuenta{
+      font-size: 16px;
+      margin: 25px auto 0;
+      max-width: 350px;
+      text-align: center;
+      a{
+        cursor: pointer;
+        padding: 0 5px;
+        &:hover{
+          opacity: 0.6;
+        }
+      }
+    }
+    .label-autenticacion{
+      color: var(--ion-color-gris-dos);
+      font-weight: 400;
+    }
+    .boton-autenticacion{
+      margin-top: 25px;
+    }
+    .area-contacto{
+    margin: 30px auto 0;
+    max-width: 350px;
+    text-align: center;
+    color: var(--ion-color-gris-cuatro);
+    margin-bottom: 40px;
+    font-weight: 300;
+      .contacto{
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 400;
+        .telefonos{
+          color: var(--ion-color-gris-dos);
+          
+        }
+      }
+    }
+    .eye-inside-input{
+      ion-input{
+          --padding-end: 44px;
+      }
+      ion-icon.eye{
+          position: absolute;
+          right: 0;
+          bottom: 8px;
+          z-index: 2;
+          cursor: pointer;
+      }
+    }
+    .area-texto-error{
+      color: var(--ion-color-rojo);
+      font-size: 14px;
+      margin-bottom: 5px;
+      padding: 0 5px;
+      line-height: 18px;
+      min-height: 18px;
+    }
+    .crear-cuenta{
+      font-size: 16px;
+      margin: 25px auto 0;
+      max-width: 350px;
+      text-align: center;
+      a{
+        cursor: pointer;
+        padding: 0 5px;
+        &:hover{
+          opacity: 0.6;
+        }
+      }
+    }
+    .label-autenticacion{
+      color: var(--ion-color-gris-dos);
+      font-size: 14px !important;
+      font-weight: 400;
+      a{
+          text-decoration: none;
+          z-index: 2;
+          position: absolute;
+          right: 10px;
+          background-color: black;
+          cursor: pointer;
+          &:hover{
+            opacity: 0.8;
+          }
+      }
+      +.olvido-contrasena{
+        font-size: 14px;
+        text-decoration: none;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        &:hover{
+          opacity: 0.8;
+        }
+      }
+    }
+    .boton-autenticacion{
+      margin-top: 25px;
+    }
+    .area-contacto{
+    margin: 30px auto 0;
+    max-width: 350px;
+    text-align: center;
+    color: var(--ion-color-gris-cuatro);
+    margin-bottom: 40px;
+    font-weight: 300;
+      .contacto{
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 400;
+        .telefonos{
+          color: var(--ion-color-gris-dos);
+          
+        }
+      }
+    }
+    .entidad{
+      color: var(--ion-color-gris-dos);
+      text-align: center;
+      font-size: 15px;
+      font-weight: 400;
+      margin-top: 40px;
+    }
+    .derechos-reservados{
+      color: var(--ion-color-gris-cuatro);
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 5px;
+    }
+    .border-toolbar{
+      border-bottom: 2px solid var(--ion-color-primary);
+    
+    }
+    .border-bottom{
+      border-bottom: 1px solid var(--ion-color-gris-seis);
+    }
+    
+    /* Spinner */
+    .spinner-loading{
+      text-align: center;
+      ion-spinner{
+          margin: 0 auto;
+          transform: scale(2);
+      }
+      span{
+          color: var(--ion-color-gris-dos);
+          display: block;
+      }
+  }
+/* Listado */
+
+.listado{
+  margin-bottom: 20px;
+}
+.cabecera-turnado{
+  color: #a3a5a7;
+  font-size: 14px;
+  margin-left: 20px;
+  line-height: 15px;
+  margin-bottom: 10px;
+
+}
+.cuerpo-turnado{
+  color: #595a5c;
+  font-size: 15px;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.folio{
+
+  span{
+  font-weight: 600;
+  letter-spacing: .13rem;
+}
+}
+.icon-tipo{
+  font-size: 20px;
+}
+.capturar:hover{
+  background-color: #ffffff;
+  opacity: .6;
+}
+.capturar{
+  --border-color: #f2f4f4;
+  ion-icon {
+    font-size: 16px;
+  }
+
+}
+.rojo{
+  color: var(--ion-color-rojo);
+}
+.naranja{
+  color: var(--naranja);
+  font-size: 1.1rem;
+}
+.azul{
+  color: var(--azul);
+  font-size: 1.1rem;
+}
+.verde{
+  color: var(--ion-color-verde);
+}
+.gris-tres{
+  color: var(--ion-color-gris-tres);
+}
+.urgente{
+  color: var(--ion-color-rojo);
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  font-size: 15px;
+}
+.tipo-entrada{
+  font-weight: 500;
+  font-size: 14px;
+}
+.texto{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fecha{
+  font-size: 14px;
+}
+h1{
+  color: var(--ion-color-gris-dos);
+  font-size: 1.5rem;
+  span{
+    font-weight: 300;
+    color: var(--ion-color-gris-tres);
+  }
+}
+h2{
+    color: var(--ion-color-gris-dos);
+    font-size: 1.3rem !important;
+    span{
+      font-weight: 300;
+      color: var(--ion-color-gris-tres);
+    }
+}
+h5{
+  color: var(--ion-color-gris-uno);
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  margin: 5px 0 10px 0 !important;
+}
+h6{
+  color: var(--ion-color-gris-dos);
+  font-weight: 500 !important;
+  font-size: 18px !important;
+}
+.border-bottom{
+  border-bottom: 1px solid var(--ion-color-gris-seis);
+}
+.border-bottom-seccion{
+  border-bottom: 2px solid var(--ion-color-primary);
+  position: relative;
+   top: -12px;
+   opacity: .2 !important;
+}
+.cargando{
+  p{
+      color: var(--ion-color-gris-tres);
+      font-size: 13px;
+      position: relative;
+      top: -10px;
+  }
+  ion-spinner {
+      transform: scale(1);
+      position: relative;
+      top: -10px;
+  }
+}
+  // Modal fullscreen
+  ion-modal.fullscreen {
+    --width: 100%;
+    --height: 100%;
+    --border-radius: 0;
+  }
+  ion-modal.medium {
+    --width: 80%;
+    --height: 80%;
+    --border-radius: 0;
+  }
+ 

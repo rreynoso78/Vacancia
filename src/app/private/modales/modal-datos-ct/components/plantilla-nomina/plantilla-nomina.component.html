@@ -1,0 +1,35 @@
+
+   <ion-card>
+    <ion-card-header>
+     <ion-card-title>Plantilla Nomina         </ion-card-title>
+     </ion-card-header>
+
+    <ion-card-content>
+      <div>
+        <table class="table table-hover " >
+          <thead class="thead-dark">
+            <tr  >
+
+              <th scope="col">Apellido Paterno</th>
+              <th scope="col">Apellido Materno</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">plaza</th>
+              <th scope="col">RFC</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of datosPlantilla; let i = index">
+              <td>{{ p.apellidopaterno }}</td>
+              <td>{{ p.apellidomaterno }}</td>
+              <td>{{ p.nom_emp }}</td>
+              <td>{{ p.plaza }}</td>
+              <td>{{ p.rfc }}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </ion-card-content>
+  </ion-card>

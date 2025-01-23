@@ -1,0 +1,52 @@
+<ion-app >
+ <ion-split-pane contentId="main-content"  >  
+    <ion-menu   contentId="main-content" >
+      <ion-header   >
+        <ion-toolbar >
+        
+          <ion-title>
+          Menu
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list >
+           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item *ngIf="p.visible " (click)="mostrarPagina(p.url)"  button   lines="none"   >
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item> 
+          </ion-menu-toggle>  
+        </ion-list>
+      </ion-content>
+      <ion-footer>
+        <ion-item button lines="none" detail="true" detail-icon="chevron-down-outline" class="menu-button-user" >
+          <ion-avatar slot="start">
+            <!-- <img alt="{{usuario.usuario}}" *ngIf="esHombre()" [src]="'assets/icon/avatar_profesor.png'" />
+            <img alt="{{usuario.usuario}}" *ngIf="esMujer()" [src]="'assets/icon/avatar_profesora.png'" /> -->
+          </ion-avatar>
+          <ion-label>
+            <h3>{{nombreusuario}}</h3>
+          </ion-label>
+        </ion-item>
+        <ion-header>
+          <ion-toolbar>
+              <!-- <ion-img src="assets/icon/usicamm-horizontal.svg"></ion-img> -->
+            <ion-title></ion-title>
+            <ion-buttons slot="primary">
+              <ion-button (click)="confirmarCerrarSesion()" color="gris-tres">
+                <ion-icon slot="start" ios="exit-outline" md="exit-outline"></ion-icon>
+                Salir
+              </ion-button>
+   
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+      </ion-footer>
+    </ion-menu>
+    
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+    
+   </ion-split-pane>  
+  
+</ion-app>

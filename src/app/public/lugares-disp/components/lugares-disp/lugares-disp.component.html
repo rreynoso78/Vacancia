@@ -1,0 +1,328 @@
+<ion-header>
+  <ion-toolbar color="primary" >
+    <ion-buttons >
+      <ion-button (click)="toggleMenu()" color="gris-tres" size="small">
+        <ion-icon name="grid-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>     
+    <ion-title >
+     Lugares Disponibles Federales
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class=" ion-no-padding" >  
+      <div [formGroup]="FormVacantes">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3">
+              <ion-item>
+                <ion-label position="stacked">Clasificación</ion-label>
+                <ion-select formControlName="clasificacion" placeholder="Clasificacion">
+                  <ion-select-option value="0">Elige..</ion-select-option>
+                  <ion-select-option value="1">Definitivas</ion-select-option>
+                  <ion-select-option value="2">Temporales </ion-select-option>
+                </ion-select>
+              </ion-item>
+             
+            </ion-col>
+            <ion-col size="3">
+              <ion-item>
+                <ion-label position="stacked">Función </ion-label>
+                <ion-select formControlName="funcion"   placeholder="Función">
+                  <ion-select-option value="0">Elige..</ion-select-option>
+                  <ion-select-option value="1">Docentes</ion-select-option>
+                  <ion-select-option value="2">Directivos</ion-select-option>
+                  <ion-select-option value="3">Administrativos</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item [disabled]="IdNivel!==0" >
+               <ion-label position="stacked">Nivel Educativo </ion-label>
+               <ion-select   formControlName="nivelEducativo"  interface="action-sheet"   placeholder="Nivel Educativo">
+                  <ion-select-option  *ngFor="let n of NivelesEducativos; let i = index" [value]="n.idNivelEducativo">{{n.descripcion}}</ion-select-option>
+               </ion-select>
+             </ion-item>
+           </ion-col>
+       
+          </ion-row>
+          <ion-row>
+            <ion-col size="3">
+             
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label position="stacked">Quincena </ion-label>
+                      <ion-select formControlName="anioIni" interface="popover"  placeholder="año"  >
+                        <ion-select-option value="0">Elige..</ion-select-option>
+                        <ion-select-option  *ngFor="let a of anios; let i = index" [value]="a.anio">{{a.anio}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label position="stacked"> Desde</ion-label>
+                      <ion-select formControlName="quinIni" interface="popover"    placeholder="quincena">
+                        <ion-select-option value="0">Elige..</ion-select-option>
+                        <ion-select-option  *ngFor="let q of quincena; let i = index" [value]="q">{{q}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+    
+            </ion-col>
+            <ion-col size="3">
+               <ion-row>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label position="stacked">Quincena </ion-label>
+                      <ion-select  formControlName="anioFin" interface="popover" placeholder="año"  >
+                        <ion-select-option value="0">Elige..</ion-select-option>
+                        <ion-select-option  *ngFor="let a of anios; let i = index" [value]="a.anio">{{a.anio}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label position="stacked"> Hasta</ion-label>
+                      <ion-select formControlName="quinFin" interface="popover"     placeholder="quincena">
+                        <ion-select-option value="0">Elige..</ion-select-option>
+                        <ion-select-option  *ngFor="let q of quincena; let i = index" [value]="q">{{q}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+    
+            </ion-col>
+            <ion-col size="2">
+              <ion-row>
+                  <ion-item>
+                    <ion-label position="stacked">Estatus </ion-label>
+                    <ion-select formControlName="IdEstatus"   interface="action-sheet"  >
+                      <ion-select-option  selected value="0">Todos...</ion-select-option>
+                      <ion-select-option   *ngFor="let n of EstatusVacancia; let i = index" [value]="n.idEstatus">{{n.descripcion}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+              </ion-row>
+            </ion-col>
+            <ion-col size="4">
+              <ion-row>
+                <ion-col size="6">
+                  <ion-item>
+                    <ion-label position="stacked">Filtrar por </ion-label>
+                    <ion-select formControlName="criterio" (ionChange)="getfiltro()"  interface="action-sheet"  >
+                      <ion-select-option selected value="0">Sin Filtro..</ion-select-option>
+                      <ion-select-option value="4">RFC</ion-select-option>
+                      <ion-select-option value="5">Plaza</ion-select-option>
+                      <ion-select-option value="1">Centro de Trabajo</ion-select-option>
+                      <ion-select-option value="2">Municipio</ion-select-option>
+                      <ion-select-option value="3">Localidad</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-item *ngIf="labelBusqueda !== ''">
+                    <ion-label position="stacked">{{labelBusqueda}} </ion-label>
+                    <ion-input size="5"  formControlName="TextoBuscar"  [clearOnEdit]="true"  labelPlacement="floating" placeholder="Escribe {{labelBusqueda}}">
+                      <ion-icon name="filter-circle-outline"></ion-icon>
+                    </ion-input>
+                  </ion-item>
+                  
+                </ion-col>
+              </ion-row>
+            </ion-col>
+         
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+              <ion-button size="small" fill="solid" (click)="buscar()" title="Buscar" >
+                <ion-icon   slot="icon-only" name="search"></ion-icon>
+              </ion-button>
+              <ion-button size="small" fill="solid" (click)="exportar()" title="Exportar" >
+                <ion-icon slot="icon-only" name="cloud-download-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row >
+            <div >
+              <!-- <ion-grid *ngIf="rows">
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label position="floating">Filtrar por Plaza ... </ion-label>
+                        <ion-input   [clearOnEdit]="true" (keyup)="FiltrarPor($event,1)"  labelPlacement="floating" placeholder="número de plaza">
+                        <ion-icon name="filter-circle-outline"></ion-icon>
+                      </ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label position="stacked">Estatus </ion-label>
+                      <ion-select  (ionChange)="FiltrarPor($event,2)"  interface="action-sheet"  >
+                        <ion-select-option  selected [value]="0">Todos...</ion-select-option>
+                        <ion-select-option   *ngFor="let n of EstatusVacancia; let i = index" [value]="n.idEstatus">{{n.descripcion}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label position="floating">Filtrar por Centro de Trabajo... </ion-label>
+                      <ion-input size="5"  [clearOnEdit]="true" (keyup)="FiltrarPor($event,3)"  labelPlacement="floating" placeholder="número de ct">
+                        <ion-icon name="filter-circle-outline"></ion-icon>
+                      </ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            -->
+
+            
+              
+        <ngx-datatable id="exportable" #myTable class="material" [loadingIndicator]="loadingIndicator"  [columnMode]="ColumnMode.standard" [rows]="rows"  
+              [headerHeight]="50" [footerHeight]="50" [rowClass]="getRowClass"  rowHeight="auto" [reorderable]="reorderable" [limit]="10" 
+              [selected]="selected" 
+              [selectionType]="SelectionType.checkbox"
+              [selectAllRowsOnPage]="false"
+            
+              
+              > 
+              <!-- Row Detail Template -->
+            <!-- <ngx-datatable-row-detail  [rowHeight]="250" #myDetailRow (toggle)="onDetailToggle($event)">
+                <ng-template let-row="row" let-expanded="expanded"  ngx-datatable-row-detail-template>
+                  <div class="shadow p-3 mb-5 bg-white rounded">
+                    <table class="table table-hover " >
+                      <thead class="thead-dark">
+                        <tr  >
+                          <th scope="col">Estatus Análitico</th>
+                          <th scope="col">Desc Categoria</th>
+                          <th scope="col">Turno</th>
+                          <th scope="col">Ultimo Motivo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="">
+                          <td>
+                            <p> {{ row.estatusAnalitico }} </p>
+                          </td>
+                          <td>{{ row.categoria }}</td>
+                          <td>{{ row.matutino }}</td>
+                        
+                       
+                        </tr>
+                         
+                      </tbody>
+                    </table>
+                   <hr>
+                  </div>
+                </ng-template>
+            </ngx-datatable-row-detail>
+            <ngx-datatable-column
+              [width]="50"
+              [resizeable]="false"
+              [sortable]="false"
+              [draggable]="false"
+              [canAutoResize]="false"
+            >
+              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded"
+                  title="Expand/Collapse Row" (click)="toggleExpandRow(row)" >
+                </a>
+              </ng-template>
+            </ngx-datatable-column> -->
+              <!-- <ngx-datatable-column
+              [sortable]="false"
+              [canAutoResize]="false"
+              [draggable]="false"
+              [resizeable]="false"
+            >
+            <ng-template
+              ngx-datatable-header-template
+              let-value="value"
+              let-allRowsSelected="allRowsSelected"
+              let-selectFn="selectFn"
+            >
+           Autorizar
+          </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-isSelected="isSelected"
+                let-onCheckboxChangeFn="onCheckboxChangeFn"
+              >
+              
+              <ion-toggle [checked]="isSelected" (ionChange)="onCheckboxChangeFn($event)" ></ion-toggle>
+
+
+              </ng-template>
+            </ngx-datatable-column>   -->
+          <!-- <ngx-datatable-column
+            [width]="10"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            [headerCheckboxable]="true"
+            [checkboxable]="true"
+            
+            >
+          </ngx-datatable-column> 
+           -->
+              <ngx-datatable-column [width]="200"   prop="plazaFONE" name="Plaza" >
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <ion-button size="small" (click)="openDetallePlaza(row.plazaFONE)" fill="clear"> {{ row.plazaFONE }}<ion-icon name="open-outline">
+                  </ion-icon>  </ion-button>
+                 <ion-icon  name="information-outline"></ion-icon> <span title="{{row.categoria}}"> {{ row.cat_Puesto }} </span>
+                
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column  name="Estatus Plaza"  >
+                <ng-template let-row="row"    ngx-datatable-cell-template>
+                  {{ row.estatusPlaza }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column  name="Estatus MDP"  >
+                <ng-template let-row="row"    ngx-datatable-cell-template>
+                  <ion-label> {{ row.estatusMDP }}</ion-label><br>
+                  <span class="text-muted">{{ row.fechaDeCarga }}</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="pagoDemasia" name="P. Demasia" [width]="80" >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column [width]="180"  prop="cct" name="CT">
+                <ng-template let-row="row"   ngx-datatable-cell-template>
+                  <ion-button size="small" (click)="openPlantilla(row.cct,row.rfc)" fill="clear"><ion-icon name="open-outline">
+                    </ion-icon>  {{ row.cct }} </ion-button>
+                 </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="ultimoMotivo" name="Último Motivo">
+                <ng-template  let-row="row"  ngx-datatable-cell-template>
+                  {{ row.rfc}}
+                  {{ row.ultimoMotivo}}
+                  {{ row.inicio }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Analítico">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.estatusAnalitico }}
+                  {{ row.cct }} 
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="" name="Solicitar" [cellClass]="getCellClass">
+                <ng-template let-row="row"  ngx-datatable-cell-template>
+                  <ion-button (click)="AbreSolicitud(row)" *ngIf="row.pagoDemasia==='No' && (row.idEstatus_Vacante===0 || row.idEstatus_Vacante===2)  " fill="clear" >Solicitar</ion-button>
+                  <ion-button (click)="AbreSeguimiento(row)" color="primary" fill="clear" *ngIf="row.idEstatus_Vacante>0">
+                    <sub>  {{getDescEstatus(row.idEstatus_Vacante)}}</sub>
+                  </ion-button>
+                  
+                </ng-template>
+              </ngx-datatable-column>
+             
+            </ngx-datatable>
+            </div>
+          </ion-row> 
+        </ion-grid>
+      </div>
+</ion-content>

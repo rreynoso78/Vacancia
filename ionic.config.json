@@ -1,0 +1,7 @@
+{
+  "name": "PortalRH",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

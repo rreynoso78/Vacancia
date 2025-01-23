@@ -1,0 +1,14 @@
+[
+  {
+    "id":1,
+    "funcion":"DOCENTE"
+  },
+  {
+    "id":2,
+    "funcion":"DIRECTIVO"
+  },
+  {
+    "id":3,
+    "funcion":"ADMINISTRATIVO"
+  }
+]

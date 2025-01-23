@@ -1,0 +1,89 @@
+
+
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Solicitar Recurso</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="salir()" [strong]="true">Salir</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+       PLAZA: {{DatosSolicitud.plazaFONE}}
+      </ion-card-title>
+      <ion-card-subtitle>
+      CT:{{DatosSolicitud.cct}}
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label> ¿OTRO CT?  </ion-label>
+            <ion-input fill="solid"  [(ngModel)]="otroCT"
+            helperText="ESCRIBE LA CLABE DEL CENTRO DE TRABAJO"
+            placeholder="Clave de centro de Trabajo"></ion-input>
+
+          </ion-col>
+          <ion-col>
+            <ion-label> Justificación: </ion-label>
+             <ion-textarea rows="2" [(ngModel)]="justifica"  label="Solid input" label-placement="floating" fill="solid"
+             helperText="Justificaciones para RH"
+             placeholder="Justificaciones para RH"></ion-textarea>
+           </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label> Prioridad: </ion-label>
+            <ion-select
+              [(ngModel)]="slcPrioridad"
+              formControlName="prioridad" interface="popover" placeholder="Seleccione">
+              <ion-select-option *ngFor="let option of optionsPrioridad"
+              [value]="option.value">
+              {{ option.label }}
+              <!--[ngClass]="'select-option-'+option.value" -->
+                </ion-select-option>
+            </ion-select>
+
+
+           </ion-col>
+        </ion-row>
+
+        <ion-row>
+
+          <ion-col>
+            <ion-label> Observaciones Adicionales: </ion-label>
+             <ion-textarea rows="2" [(ngModel)]="observa"  label="Solid input" label-placement="floating" fill="solid"
+             helperText="Observaciones para RH"
+             placeholder="Observaciones para RH"></ion-textarea>
+           </ion-col>
+           <ion-col>
+            <ion-item>
+              <ion-button expand="full" (click)="file.click()">
+                <ion-icon lazy="true" slot="start" name="document-attach"></ion-icon>
+                <ion-label slot="end">Selecciona Evidencia</ion-label>
+              </ion-button>
+                <input title="" placeholder="" class="ion-hide" #file type="file" (change)="selecionaImagen(file.files)" id="file-input"
+                  accept=".pdf">
+
+                  <span> {{nombreDoc}}</span>
+           </ion-item>
+
+           </ion-col>
+
+        </ion-row>
+      </ion-grid>
+      <ion-button fill="solid" (click)="solicitar()" >
+        <ion-icon  slot="start" name="save"></ion-icon>
+        Guardar
+      </ion-button>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

@@ -1,0 +1,33 @@
+<ul class="nav nav-tabs nav-justified">
+
+  <li class="nav-item" *ngIf="RFC">
+    <ion-button size="small"  (click)="openTab(1)">
+      Ultimo Movimiento
+      <ion-icon slot="icon-only" name="id-card"></ion-icon>
+    </ion-button>
+  </li>
+  <li class="nav-item">
+    <ion-button size="small"  (click)="openTab(2)">
+      Plantilla Nomina
+      <ion-icon slot="icon-only" name="id-card"></ion-icon>
+    </ion-button>
+
+  </li>
+  <li class="nav-item">
+    <ion-button size="small" (click)="openTab(3)">
+      Plantilla Sipse
+      <ion-icon slot="icon-only" name="receipt"></ion-icon>
+    </ion-button>
+
+  </li>
+  <li class="nav-item">
+    <ion-button size="small" (click)="openTab(4)">
+    Archivo Plantilla Laboral
+      <ion-icon slot="icon-only" name="reader"></ion-icon>
+    </ion-button>
+
+  </li>
+</ul>
+
+
+<ng-template #receptor></ng-template>

@@ -1,0 +1,71 @@
+
+<ion-content>
+  <div class="area-inicio-sesion">
+    <ion-row class="area-logo-sistema ion-margin-top">
+      <!-- <ion-img class="logo-sistema" src="assets/icon/usicamm-ver.svg"></ion-img> -->
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center ion-no-padding area-nombre-proceso">
+        <!-- <ion-img src="assets/icon/promocion-vertical.svg"></ion-img> -->
+        <h4>{{app.name}}</h4>
+        <h6>{{app.description}}</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <div class="area-autenticacion">
+        <app-login></app-login>
+      </div>
+    </ion-row>
+  </div>
+  <ion-row class=" w-350">
+    <ion-col size="12">
+      <h5>Contacto</h5>
+    </ion-col>
+    <ion-col size="12">
+      <ul class="contacto">
+        <li class="telefono" *ngIf="app.phones && app.phones.length > 0">
+          <div *ngFor="let t of app.phones">{{t.number}}
+            <p *ngIf="t.exts.nonEmpty()">Exts.<span *ngFor="let ext of t.exts"> {{ext}}</span></p>
+          </div>
+        </li>
+        <ng-container *ngIf="app.emailInfo && app.emailInfo.nonEmpty()">
+          <li class="correo" *ngFor="let ei of app.emailInfo">
+            <p *ngIf="ei.description">{{ei.description}}</p>
+            <a [attr.href]="'mailto:' + ei.email + '?subject=Sobre proceso de Promoción Vertical'">{{ei.email}}</a>
+          </li>
+        </ng-container>
+      </ul>
+    </ion-col>
+  </ion-row>
+   
+  <ion-row class="w-350 ion-padding-bottom ion-padding-top">
+    <ion-col size="12">
+    <h5>Versión</h5>
+    </ion-col>
+    <ion-col size="12" class="version-publicada ion-no-padding">
+      <ion-row>
+        <ion-col class="col-75 numero-version">
+          <p>{{infoUltimoCambio.version}}</p>
+        </ion-col>
+        <!-- <ion-col class="funcionalidades-errores">
+          <p class="fecha">{{infoUltimoCambio.date}}</p>
+          <ng-container *ngIf="infoUltimoCambio.added.length > 0">
+            <h6>Nuevas funcionalidades</h6>
+            <ul>
+              <li *ngFor="let a of infoUltimoCambio.added">{{a}}</li>
+            </ul>
+          </ng-container>
+          <ng-container *ngIf="infoUltimoCambio.fixed.length > 0">
+            <h6>Corrección de errores</h6>
+            <ul>
+              <li *ngFor="let f of infoUltimoCambio.fixed">{{f}}</li>
+            </ul>
+          </ng-container>
+        </ion-col> -->
+      </ion-row>
+    </ion-col>
+    <!-- <ion-col size="12" class="ion-text-right">
+      <ion-button size="small" fill="clear" (click)="abrirModalHistorialCambios()">Ver mejoras anteriores</ion-button>
+    </ion-col> -->
+  </ion-row>
+</ion-content>

@@ -1,0 +1,80 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Estatus de la plaza  {{plaza}}  </ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Salir</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding">
+  <ion-progress-bar *ngIf="loadingIndicator"  type="indeterminate"></ion-progress-bar>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>En NOMINA</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <table class="table table-hover " >
+        <thead class="thead-dark">
+          <tr  >
+            <th scope="col">Inicio</th> 
+            <th scope="col">Termino</th>
+            <th scope="col">Motivo</th>
+            <th scope="col">Numero de Documento</th>
+            <th scope="col">Plaza</th>
+            <th scope="col">Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of DatosPlaza; let i = index">
+            <td>{{ p.inicio }}</td>
+            <td>{{ p.termino }}</td>
+            <td>{{ p.motmov }}</td>
+            <td>{{ p.numdocto }}</td>
+            <td>{{ p.numplaza }}</td>
+            <td>{{ p.statusplaza }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>En MDP</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <table class="table table-hover " >
+        <thead class="thead-dark">
+          <tr  >
+            <th scope="col">Estatus Actual</th> 
+            <th scope="col">Codigo Del Movimiento</th>
+            <th scope="col">RFC</th>
+            <th scope="col">Fecha Inicial</th>
+            <th scope="col">Fecha Final</th>
+            <th scope="col">Fecha Carga MDP</th>
+            <th scope="col">Fecha Operación</th>
+            <th scope="col">Fecha Ordenada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of DatosMDP; let i = index">
+            <td>{{ p.estatusActualDeLaPlaza }}</td>
+            <td>{{ p.codigoDelMovimiento }}</td>
+            <td>{{ p.rfc }}</td>
+            <td>{{ p.fechaInicial }}</td>
+            <td>{{ p.fechaFinal }}</td>
+            <td>{{ p.fechaCargaMDP }}</td>
+            <td>{{ p.fecha_Operacion }}</td>
+            <td>{{ p.fecha_Ordenada }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+ 
+</ion-content>

@@ -1,0 +1,11 @@
+{
+  "/apiSipSev": {
+    "target": "https://sipsev2.sev.gob.mx",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/apiSipSev": ""
+    }
+  }
+}

@@ -1,0 +1,305 @@
+<ion-grid>
+
+
+  <ion-row>
+    <!-- <ion-card-title>Vacantes compatibles</ion-card-title> -->
+    <ion-col size="auto" style="align-content: center;">
+      <ion-label>Distancia máxima seleccionada: </ion-label>
+      <ion-label class="fw-bold">{{distancia}} km.</ion-label>
+    </ion-col>
+    <ion-col size="6">
+      <ion-range
+      aria-label="Custom range"
+      [min]="0"
+      [max]="distanciaMax"
+      [value]="distancia"
+      [pin]="true"
+      [(ngModel)]="distancia"
+      (ionKnobMoveEnd)="onDistanciaChange($event)"
+      ></ion-range>
+    </ion-col>
+    <ion-col size="auto" style="align-content: center;">
+      <ion-label>Vacantes encontradas: </ion-label>
+      <ion-label class="fw-bold">{{vacantes}}</ion-label>
+    </ion-col>
+  </ion-row>
+  <br>
+  <ion-row>
+
+
+<div style="width: 100%;">
+  <ngx-datatable
+   #myTable
+    class="material"
+    [rows]="rows"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [limit]="8"
+    [columnMode]="ColumnMode.force"
+    [rowHeight]="50"
+    [reorderable]="false"
+    [scrollbarH]="true"
+    >
+  <!-- Row Detail Template -->
+  <ngx-datatable-row-detail [rowHeight]="50" #myDetailRow>
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+      <div style="padding-left:60px; font-size:14px">
+        <div>{{ row.gender }}, {{ row.age }}</div>
+      </div>
+    </ng-template>
+  </ngx-datatable-row-detail>
+
+
+  <ngx-datatable-column name="Funcion" [minWidth]="120">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <ion-label>{{row.funcion}}</ion-label>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Categoria" [minWidth]="400">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <ion-label>{{row.categoria}}</ion-label>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Plaza"  [minWidth]="180">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <ion-label>{{row.plazaFONE}}</ion-label>
+    </ng-template>
+  </ngx-datatable-column>
+      <ngx-datatable-column name="Centro Trabajo" [minWidth]="150">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-label>{{row.cct}}</ion-label>
+        </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Pago en Demasia" [minWidth]="150">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <ion-label>{{row.pagoDemasia}}</ion-label>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Localidad" [minWidth]="150">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <ion-label>{{row.nombreLocalidad}}</ion-label>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Municipio" [minWidth]="200">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <ion-label>{{row.nombreLocalidad}}</ion-label>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Region" [minWidth]="120">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <ion-label>{{row.region}}</ion-label>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Distancia" [minWidth]="100">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <ion-label>{{row.distanciaKm}} km.</ion-label>
+    </ng-template>
+  </ngx-datatable-column>
+
+
+  <ngx-datatable-column  name="Acciones" [cellClass]="getCellClass" [minWidth]="150">
+    <ng-template let-row="row"  ngx-datatable-cell-template>
+      <ion-button (click)="AbreSolicitud(row)"  fill="clear" >Solicitar</ion-button>
+      <!-- <ion-button (click)="AbreSolicitud(row)" *ngIf="row.pagoDemasia=='No' && (row.idEstatus_Vacante==0 || row.idEstatus_Vacante==2)  " fill="clear" >Solicitar</ion-button> -->
+      <!-- <ion-button (click)="AbreSeguimiento(row)" color="primary" fill="clear" *ngIf="row.idEstatus_Vacante>0">
+        <sub>  {{getDescEstatus(row.idEstatus_Vacante)}}</sub>
+      </ion-button> -->
+
+    </ng-template>
+  </ngx-datatable-column>
+
+
+    <!-- <ngx-datatable-column
+    [width]="100"
+    [resizeable]="true"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+
+    <ngx-datatable-column name="Document (QrCode)"
+    [sortable]="false"
+    [draggable]="false"
+    [minWidth]="300" >...</ngx-datatable-column>
+
+    <ngx-datatable-column name="Status"
+    [canAutoResize]="false"
+    [minWidth]="300">...</ngx-datatable-column>
+    <ngx-datatable-column name="Status3"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false"
+    [minWidth]="300">...</ngx-datatable-column>
+    <ngx-datatable-column name="Statu2s"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Staqwetus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Staasdtus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Staqwetus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Stat21us"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="S123tatus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Stat456us"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="S34tatus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Sta22tus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Sta22tus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Sta225tus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="Sta2452tus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column>
+    <ngx-datatable-column name="St23a22tus"
+    [width]="90"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">...</ngx-datatable-column> -->
+
+
+<!--
+    [reorderable]="false"
+    [scrollbarV]="true"
+    [scrollbarH]="true"
+    -->
+
+    <!-- <ngx-datatable-column
+      [width]="10"
+      [resizeable]="false"
+      [sortable]="false"
+      [draggable]="false"
+      [canAutoResize]="false"
+    >
+    </ngx-datatable-column>
+
+      <ngx-datatable-column   prop="plazaFONE" name="PlazaFone" [width]="150">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-button size="small" fill="clear" >
+            <ion-icon name="open-outline"></ion-icon>
+            <ion-label>{{row.plazaFONE}}</ion-label>
+          </ion-button>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column prop="pagoDemasia" name="Categoria" [width]="150" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-label>{{row.categoria}}</ion-label>
+        </ng-template>
+      </ngx-datatable-column> -->
+
+      <!-- <ngx-datatable-column prop="ct" name="CT" [width]="150" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-label>{{row.cct}}</ion-label>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column prop="pagoDemasia" name="Funcion" [width]="150" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-label>{{row.funcion}}</ion-label>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column prop="pagoDemasia" name="Localidad"  >
+        <ng-template let-row="row"  ngx-datatable-cell-template>
+          <ion-label>{{row.nombreLocalidad}}</ion-label>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column prop="cct" name="Municipio">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-label>{{row.nombreMunicipio}}</ion-label>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Región">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-label>{{row.region}}</ion-label>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Distancia Km">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-label>{{row.distanciaKm}}</ion-label>
+        </ng-template>
+      </ngx-datatable-column>
+
+
+      <ngx-datatable-column name="Pago en Demasia">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <ion-label></ion-label>
+        </ng-template>
+      </ngx-datatable-column> -->
+
+
+
+<!--
+      <ngx-datatable-column prop="" name="Acciones" [width]="200">
+        <ng-template let-row="row"  ngx-datatable-cell-template>
+          <ion-row>
+            <<ion-label></ion-label>
+          </ion-row>
+
+        </ng-template>
+      </ngx-datatable-column> -->
+
+    </ngx-datatable>
+    </div>
+
+
+  </ion-row>
+
+</ion-grid>
