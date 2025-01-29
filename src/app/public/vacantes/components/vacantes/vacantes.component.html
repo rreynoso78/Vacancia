@@ -1,4 +1,4 @@
-  <ion-header >
+<ion-header >
   <ion-toolbar color="primary" >
     <ion-buttons >
       <ion-button (click)="toggleMenu()" color="gris-tres"  size="small"   >
@@ -10,7 +10,8 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content class="ion-no-padding" > 
+
       <div [formGroup]="FormVacantes">
         <ion-grid>
           <ion-row>
@@ -22,7 +23,8 @@
                   <ion-select-option value="1">Definitivas</ion-select-option>
                   <ion-select-option value="2">Temporales </ion-select-option>
                 </ion-select>
-              </ion-item>             
+              </ion-item>
+             
             </ion-col>
             <ion-col size="3">
               <ion-item>
@@ -46,8 +48,45 @@
        
           </ion-row>
           <ion-row>
-            <ion-col size="3">
-             
+            <ion-col size="4">
+              <ion-row>
+                <ion-col size="6">
+                  <ion-item>
+                    <ion-label position="stacked">Filtrar por </ion-label>
+                    <ion-select formControlName="criterio" (ionChange)="getfiltro()"  interface="action-sheet"  >
+                      <ion-select-option selected value="0">Sin Filtro..</ion-select-option>
+                      <ion-select-option value="4">RFC</ion-select-option>
+                      <ion-select-option value="5">Plaza</ion-select-option>
+                      <ion-select-option value="1">Centro de Trabajo</ion-select-option>
+                      <ion-select-option value="2">Municipio</ion-select-option>
+                      <ion-select-option value="3">Localidad</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-item *ngIf="labelBusqueda !=''">
+                  <ion-label position="stacked">{{labelBusqueda}} </ion-label>
+                  <ion-input size="5"  formControlName="TextoBuscar"  [clearOnEdit]="true"  labelPlacement="floating" placeholder="Escribe {{labelBusqueda}}">
+                    <ion-icon name="filter-circle-outline"></ion-icon>
+                  </ion-input>
+                  </ion-item>
+                  
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="2">
+              <ion-row>
+                <ion-item>
+                <ion-label position="stacked">Estatus </ion-label>
+                <ion-select formControlName="IdEstatus"   interface="action-sheet"  >
+                  <ion-select-option   [value]="0">Todos...</ion-select-option>
+                  <ion-select-option   *ngFor="let n of EstatusVacancia; let i = index" [value]="n.idEstatus">{{n.descripcion}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-row>
+            </ion-col>
+
+            <ion-col size="3"*ngIf="FormVacantes.get('clasificacion').value === '2'">
                 <ion-row>
                   <ion-col size="6">
                     <ion-item>
@@ -70,7 +109,7 @@
                 </ion-row>
     
             </ion-col>
-            <ion-col size="3">
+            <ion-col size="3" *ngIf="FormVacantes.get('clasificacion').value === '2'">
                <ion-row>
                   <ion-col size="6">
                     <ion-item>
@@ -93,44 +132,7 @@
                 </ion-row>
     
             </ion-col>
-          
-            <ion-col size="2">
-              <ion-row>
-                <ion-item>
-                <ion-label position="stacked">Estatus </ion-label>
-                <ion-select formControlName="IdEstatus"   interface="action-sheet"  >
-                  <ion-select-option   [value]="0">Todos...</ion-select-option>
-                  <ion-select-option   *ngFor="let n of EstatusVacancia; let i = index" [value]="n.idEstatus">{{n.descripcion}}</ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-row>
-            </ion-col>
-            <ion-col size="4">
-              <ion-row>
-                <ion-col size="6">
-                  <ion-item>
-                    <ion-label position="stacked">Filtrar por </ion-label>
-                    <ion-select formControlName="criterio" (ionChange)="getfiltro()"  interface="action-sheet"  >
-                      <ion-select-option selected value="0">Sin Filtro..</ion-select-option>
-                      <ion-select-option value="4">RFC</ion-select-option>
-                      <ion-select-option value="5">Plaza</ion-select-option>
-                      <ion-select-option value="1">Centro de Trabajo</ion-select-option>
-                      <ion-select-option value="2">Municipio</ion-select-option>
-                      <ion-select-option value="3">Localidad</ion-select-option>
-                    </ion-select>
-                  </ion-item>
-                </ion-col>
-                <ion-col size="6">
-                  <ion-item>
-                    <ion-label position="stacked">{{labelBusqueda}} </ion-label>
-                  <ion-input size="5"  formControlName="TextoBuscar"  [clearOnEdit]="true"  labelPlacement="floating" placeholder="Escribe {{labelBusqueda}}">
-                    <ion-icon name="filter-circle-outline"></ion-icon>
-                  </ion-input>
-                  </ion-item>
-                  
-                </ion-col>
-              </ion-row>
-            </ion-col>
+
           </ion-row>
           <ion-row>
             <ion-col size="3">
