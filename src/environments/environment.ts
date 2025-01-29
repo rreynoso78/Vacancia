@@ -7,16 +7,24 @@ export const environment = {
   preview: false,
   idAplicacion: 'portalRh.app.sev',
   endpoints: {
-    global: 'https://nomina-msvc.sev.gob.mx/api',
-    auth: 'https://nomina-msvc.sev.gob.mx/api/',
+    //global: 'https://nomina-msvc.sev.gob.mx/api',
+    //auth: 'https://nomina-msvc.sev.gob.mx/api/',
    // apiSirh: 'https://localhost:44307/api',
    // authRefresh: 'https://localhost:44307/api/refresh-token',
-    apiSirh: 'http://172.30.21.161:5001/api',
-    //apiSirh: 'https://sirh-msvc.sev.gob.mx/api',
+    //apiSirh: 'http://172.30.21.161:5001/api',
+    global: 'https://api-empleado.sev.gob.mx/api',
+    auth: 'https://api-empleado.sev.gob.mx/api',
+
+    apiSirh: 'https://sirh-msvc.sev.gob.mx/api',
+    authRefresh: 'https://sirh-msvc.sev.gob.mx/api/refresh-token',
+    
     apiCentroTrabajo:'https://ct-consulta.sev.gob.mx/api',
-    apiPlantilla: 'http://172.30.21.161:5005/api',
-    authRefresh: 'http://172.30.21.161:5001/api/refresh-token',
-    //authRefresh: 'https://sirh-msvc.sev.gob.mx/api/refresh-token',
+    apiPlantilla:'https://plantillalaboral-msvc.sev.gob.mx/api',
+    
+    //apiPlantilla: 'http://172.30.21.161:5005/api',
+    //authRefresh: 'http://172.30.21.161:5001/api/refresh-token',
+
+    
     //permisos: 'https://msvc.sev.gob.mx/idsev/perfil/api/usuario/extendido',
     //docsParticipantes: 'https://172.30.20.207/apiUsicam/api',
     //docsParticipantes: 'localhost:27565/api',

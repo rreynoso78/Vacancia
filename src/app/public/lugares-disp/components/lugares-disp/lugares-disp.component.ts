@@ -408,6 +408,10 @@ export class LugaresDispComponent implements OnInit {
         this.labelBusqueda="Plaza"
         break;
       }
+      case "6":{
+        this.labelBusqueda="Región"
+        break;
+      }
       default:
         this.labelBusqueda= ""
         break;
